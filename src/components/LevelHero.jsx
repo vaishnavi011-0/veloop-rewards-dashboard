@@ -1,5 +1,6 @@
 
 import '../App.css';
+import InfoTooltip from './InfoTooltip';
 
 export default function LevelHero({ data }) {
     const progress = Math.min(
@@ -23,7 +24,10 @@ export default function LevelHero({ data }) {
                     </p>
                 </div>
 
-                <div className="level-badge" aria-label={`Level ${data.currentLevel}`}>
+                <div
+                    className="level-badge"
+                    aria-label={`Level ${data.currentLevel}`}
+                >
                     <span style={{ fontSize: '34px' }}>🏆</span>
                     <span>LEVEL {data.currentLevel}</span>
                 </div>
@@ -31,12 +35,24 @@ export default function LevelHero({ data }) {
 
             <div className="xp-summary">
                 <div>
-                    <p className="muted">Your XP</p>
+                    <p className="muted">
+                        Your XP
+                        <InfoTooltip
+                            label="About your XP"
+                            text="XP means experience points. Your progress increases as you earn XP in this demo."
+                        />
+                    </p>
                     <h2>{data.currentXP.toLocaleString()} XP</h2>
                 </div>
 
                 <div className="next-level-label">
-                    <p className="muted">Next milestone</p>
+                    <p className="muted">
+                        Next milestone
+                        <InfoTooltip
+                            label="About the next milestone"
+                            text="This is the next level you are working toward."
+                        />
+                    </p>
                     <h3>Level {data.currentLevel + 1}</h3>
                 </div>
             </div>
@@ -56,7 +72,14 @@ export default function LevelHero({ data }) {
             </div>
 
             <div className="progress-labels">
-                <span>{Math.round(progress)}% progress</span>
+                <span>
+                    {Math.round(progress)}% progress
+                    <InfoTooltip
+                        label="About XP progress"
+                        text="This percentage shows your current XP compared with the XP target for the next level."
+                    />
+                </span>
+
                 <span>{remainingXP.toLocaleString()} XP remaining</span>
             </div>
 
@@ -66,14 +89,24 @@ export default function LevelHero({ data }) {
                 </div>
 
                 <div className="reward-copy">
-                    <p className="eyebrow">NEXT LEVEL REWARD</p>
+                    <p className="eyebrow">
+                        NEXT LEVEL REWARD
+                        <InfoTooltip
+                            label="About demo rewards"
+                            text="This is a preview only. No real rewards or VEs are credited."
+                        />
+                    </p>
+
                     <h3>{data.nextReward} {data.currency}</h3>
+
                     <p className="muted">
                         Demo reward preview for Level {data.currentLevel + 1}
                     </p>
                 </div>
 
-                <span className="reward-lock" aria-label="Locked">🔒</span>
+                <span className="reward-lock" aria-label="Locked">
+                    🔒
+                </span>
             </div>
         </section>
     );

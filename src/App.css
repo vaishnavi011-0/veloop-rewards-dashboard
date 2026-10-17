@@ -880,3 +880,264 @@ a {
     animation: none;
   }
 }
+
+/* Dashboard header and mobile responsiveness */
+.dashboard-container>header {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.dashboard-container>header h1 {
+  max-width: 100%;
+  margin: 10px 0;
+  font-size: clamp(26px, 5vw, 42px);
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  line-height: 1.12;
+  overflow-wrap: anywhere;
+}
+
+.dashboard-container>header .muted {
+  max-width: 100%;
+  margin: 12px auto 0;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.dashboard-container,
+.hero-card,
+.minigame-card,
+.earning-card {
+  min-width: 0;
+}
+
+@media (max-width: 380px) {
+  .dashboard-container {
+    width: calc(100% - 24px);
+    padding-top: 24px;
+  }
+
+
+  .dashboard-container>header h1 {
+    font-size: 25px;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    max-width: 100%;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+
+  .dashboard-container>header .muted {
+    font-size: 12px;
+  }
+
+  .hero-card {
+    padding: 18px 14px;
+  }
+
+  .hero-top {
+    gap: 8px;
+  }
+
+  .hero-top h1 {
+    font-size: 25px;
+    overflow-wrap: anywhere;
+  }
+
+  .game-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .game-stat {
+    min-width: 0;
+    padding: 8px 5px;
+  }
+
+  .game-stat span {
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+
+  .game-stat strong {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 340px) {
+  .dashboard-container>header h1 {
+    font-size: 25px;
+  }
+
+  .hero-top h1 {
+    font-size: 22px;
+  }
+}
+
+/* Final narrow-screen layout fixes */
+@media (max-width: 380px) {
+  .dashboard-container>header h1 {
+    max-width: 280px;
+    margin-inline: auto;
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.6px;
+    text-wrap: balance;
+  }
+
+  .dashboard-container>header .muted {
+    max-width: 100%;
+    padding-inline: 4px;
+  }
+
+  .dashboard-container {
+    width: calc(100% - 24px);
+    max-width: 100%;
+  }
+
+  .hero-card,
+  .minigame-card,
+  .earning-card {
+    max-width: 100%;
+  }
+
+  .dashboard-container>* {
+    min-width: 0;
+  }
+}
+
+html,
+body,
+#root {
+  max-width: 100%;
+  min-width: 320px;
+}
+
+@media (max-width: 380px) {
+  body {
+    overflow-x: clip;
+  }
+}
+
+
+/* Accessible information tooltips */
+.tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.info-tooltip-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 1px solid #f4d17a;
+  border-radius: 50%;
+  background: transparent;
+  color: #f4d17a;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.info-tooltip-trigger:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.info-tooltip-content {
+  position: absolute;
+  z-index: 100;
+  top: auto;
+  bottom: calc(100% + 8px);
+  left: 0;
+  right: auto;
+  width: 220px;
+  max-width: calc(100vw - 40px);
+  box-sizing: border-box;
+  padding: 9px 11px;
+  border: 1px solid #49465d;
+  border-radius: 9px;
+  background: #171827;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 25%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+/* Show on hover, keyboard focus, or tap */
+.tooltip-wrapper:hover .info-tooltip-content,
+.tooltip-wrapper:focus-within .info-tooltip-content,
+.info-tooltip-content.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Keep tooltips near right-aligned labels inside the screen */
+.next-level-label .tooltip-wrapper .info-tooltip-content,
+.reward-copy .tooltip-wrapper .info-tooltip-content {
+  left: auto;
+  right: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .info-tooltip-content {
+    transition: none;
+  }
+}
+
+
+/* Keep tooltip text inside the viewport */
+.tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.info-tooltip-content {
+  left: 50%;
+  right: auto;
+  bottom: calc(100% + 8px);
+  width: min(220px, calc(100vw - 40px));
+  max-width: calc(100vw - 40px);
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  transform: translate(-50%, 4px);
+}
+
+.tooltip-wrapper:hover .info-tooltip-content,
+.tooltip-wrapper:focus-within .info-tooltip-content,
+.info-tooltip-content.is-visible {
+  transform: translate(-50%, 0);
+}
+
+/* Align tooltips toward the left near the right edge */
+.next-level-label .tooltip-wrapper .info-tooltip-content {
+  left: auto;
+  right: 0;
+  transform: translateY(4px);
+}
+
+.next-level-label .tooltip-wrapper:hover .info-tooltip-content,
+.next-level-label .tooltip-wrapper:focus-within .info-tooltip-content,
+.next-level-label .info-tooltip-content.is-visible {
+  transform: translateY(0);
+}
