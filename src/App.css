@@ -1141,3 +1141,53 @@ body,
 .next-level-label .info-tooltip-content.is-visible {
   transform: translateY(0);
 }
+
+/* VELOOP — Aurora Galaxy background */
+body {
+  background-color: #090d1f;
+  background-image:
+    radial-gradient(ellipse at 10% 5%,
+      rgba(107, 70, 193, 0.28),
+      transparent 38%),
+    radial-gradient(ellipse at 90% 25%,
+      rgba(0, 190, 220, 0.15),
+      transparent 35%),
+    radial-gradient(ellipse at 50% 90%,
+      rgba(95, 55, 170, 0.16),
+      transparent 42%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #f5f7ff;
+}
+
+html {
+  min-height: 100%;
+  background-color: #090d1f;
+}
+
+body {
+  min-height: 100vh;
+}
+
+
+
+/* Strong Aurora background test */
+html,
+body,
+#root {
+  min-height: 100%;
+  background-color: #090d1f;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at top left,
+      #6336a8 0%,
+      transparent 45%),
+    radial-gradient(circle at top right,
+      #006b83 0%,
+      transparent 40%) !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 700px, 100% 700px !important;
+  color: #f5f7ff;
+}
