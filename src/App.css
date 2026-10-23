@@ -906,11 +906,13 @@ a:focus-visible {
 
 .info-tooltip-content {
   position: absolute;
-  z-index: 100;
+  z-index: 1000;
   bottom: calc(100% + 10px);
-  left: 50%;
-  width: min(240px, calc(100vw - 40px));
+  left: 0;
+  right: auto;
+  width: 240px;
   max-width: calc(100vw - 40px);
+  box-sizing: border-box;
   padding: 11px 13px;
   border: 1px solid rgba(167, 139, 250, 0.38);
   border-radius: 12px;
@@ -926,7 +928,7 @@ a:focus-visible {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translate(-50%, 5px);
+  transform: translate(5px);
   transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
 }
 
@@ -936,23 +938,21 @@ a:focus-visible {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translate(-50%, 0);
+  transform: translate(0);
 }
 
 .next-level-label .tooltip-wrapper .info-tooltip-content,
 .reward-copy .tooltip-wrapper .info-tooltip-content {
   right: 0;
   left: auto;
-  transform: translateY(5px);
+
 }
 
-.next-level-label .tooltip-wrapper:hover .info-tooltip-content,
-.next-level-label .tooltip-wrapper:focus-within .info-tooltip-content,
-.next-level-label .info-tooltip-content.is-visible,
-.reward-copy .tooltip-wrapper:hover .info-tooltip-content,
-.reward-copy .tooltip-wrapper:focus-within .info-tooltip-content,
-.reward-copy .info-tooltip-content.is-visible {
-  transform: translateY(0);
+/* Accessible focus and reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .info-tooltip-content {
+    transition: none;
+  }
 }
 
 /* Footer */
