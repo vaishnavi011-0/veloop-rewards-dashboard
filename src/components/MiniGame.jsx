@@ -239,8 +239,8 @@ export default function MiniGame() {
         >
           <div
             className={`memory-stat ${seconds <= 10 && gameState === "playing"
-                ? "memory-stat-warning"
-                : ""
+              ? "memory-stat-warning"
+              : ""
               }`}
           >
             <span>TIME LEFT</span>
