@@ -3144,3 +3144,430 @@ body {
     transition: none;
   }
 }
+
+/* ==========================================
+   VELOOP REWARDS — GLOBAL UI POLISH
+   Modern Aurora Gaming Design
+   ========================================== */
+
+:root {
+  --ui-bg: #080d1c;
+  --ui-panel: rgba(17, 26, 48, 0.88);
+  --ui-panel-hover: rgba(25, 37, 66, 0.96);
+  --ui-border: rgba(167, 139, 250, 0.18);
+  --ui-purple: #a78bfa;
+  --ui-cyan: #67e8f9;
+  --ui-gold: #ffd782;
+  --ui-text: #f4f5ff;
+  --ui-muted: #9caac5;
+  --ui-radius: 20px;
+  --ui-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Overall page */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 12% 0%,
+      rgba(124, 58, 237, 0.12),
+      transparent 34%),
+    radial-gradient(ellipse at 88% 16%,
+      rgba(34, 211, 238, 0.07),
+      transparent 30%),
+    var(--ui-bg);
+  color: var(--ui-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Consistent box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Main dashboard spacing */
+.dashboard-container {
+  width: min(1160px, calc(100% - 32px));
+  margin-inline: auto;
+  padding-block: 28px 48px;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+
+h1 {
+  color: var(--ui-text);
+  font-weight: 800;
+}
+
+h2 {
+  font-weight: 750;
+}
+
+p {
+  line-height: 1.65;
+}
+
+.eyebrow {
+  color: var(--ui-cyan);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.muted {
+  color: var(--ui-muted);
+}
+
+/* Unified card styling */
+.hero-card,
+.reward-panel,
+.earning-card,
+.minigame-card,
+.roadmap-card {
+  position: relative;
+  min-width: 0;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius);
+  background:
+    linear-gradient(145deg,
+      rgba(24, 34, 61, 0.94),
+      rgba(11, 17, 34, 0.97));
+  box-shadow: var(--ui-shadow);
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+/* Subtle interactive lift */
+@media (hover: hover) and (pointer: fine) {
+
+  .earning-card:hover,
+  .reward-panel:hover {
+    transform: translateY(-3px);
+    border-color: rgba(103, 232, 249, 0.35);
+    background: var(--ui-panel-hover);
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* Level hero */
+.hero-card {
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -100px;
+  right: -75px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(167, 139, 250, 0.13);
+  filter: blur(55px);
+  pointer-events: none;
+}
+
+/* Roadmap */
+.roadmap-card {
+  padding: clamp(18px, 3vw, 30px);
+}
+
+.roadmap-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.roadmap-header h2 {
+  margin: 5px 0 8px;
+  color: var(--ui-text);
+}
+
+.roadmap-header .muted {
+  margin: 0;
+  max-width: 440px;
+}
+
+.roadmap-count {
+  flex-shrink: 0;
+  padding: 9px 13px;
+  border: 1px solid var(--ui-border);
+  border-radius: 999px;
+  background: rgba(167, 139, 250, 0.09);
+  color: var(--ui-purple);
+  font-size: 0.8rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.roadmap-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding: 5px 2px 16px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(167, 139, 250, 0.5) transparent;
+}
+
+.roadmap-track {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(145px, 1fr));
+  gap: 14px;
+  min-width: 1100px;
+}
+
+.roadmap-level {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 17px 12px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 17px;
+  background: rgba(8, 13, 28, 0.68);
+  text-align: center;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.roadmap-level.completed {
+  border-color: rgba(103, 232, 249, 0.25);
+}
+
+.roadmap-level.current {
+  border-color: rgba(167, 139, 250, 0.75);
+  background:
+    linear-gradient(155deg,
+      rgba(124, 58, 237, 0.17),
+      rgba(8, 13, 28, 0.92));
+  box-shadow: inset 0 0 22px rgba(167, 139, 250, 0.06);
+}
+
+.roadmap-level.locked {
+  border-color: rgba(148, 163, 184, 0.12);
+}
+
+@media (hover: hover) {
+  .roadmap-level:hover {
+    transform: translateY(-3px);
+    border-color: rgba(103, 232, 249, 0.45);
+  }
+}
+
+.roadmap-level-top {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.roadmap-level-label {
+  color: var(--ui-muted);
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.roadmap-state {
+  display: inline-grid;
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid var(--ui-border);
+  border-radius: 50%;
+  background: rgba(167, 139, 250, 0.09);
+  color: var(--ui-cyan);
+  font-size: 0.85rem;
+}
+
+.roadmap-level.current .roadmap-state {
+  color: var(--ui-gold);
+}
+
+.roadmap-level.locked .roadmap-state {
+  color: var(--ui-muted);
+}
+
+.roadmap-level-icon {
+  display: grid;
+  min-height: 88px;
+  place-items: center;
+  margin: 12px 0 5px;
+}
+
+.roadmap-level h3 {
+  margin: 5px 0 8px;
+  color: var(--ui-text);
+  font-size: 1rem;
+}
+
+.roadmap-xp {
+  margin: 0 0 12px;
+  color: var(--ui-cyan);
+  font-size: 0.85rem;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+.roadmap-reward-chip {
+  max-width: 100%;
+  padding: 7px 9px;
+  border: 1px solid rgba(255, 215, 130, 0.18);
+  border-radius: 10px;
+  background: rgba(255, 215, 130, 0.07);
+  color: var(--ui-gold);
+  font-size: 0.7rem;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+.roadmap-status {
+  margin-top: 13px;
+  color: var(--ui-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.roadmap-level.completed .roadmap-status {
+  color: var(--ui-cyan);
+}
+
+.roadmap-level.current .roadmap-status {
+  color: var(--ui-purple);
+}
+
+.roadmap-hint {
+  margin: 13px 0 0;
+  color: var(--ui-muted);
+  font-size: 0.8rem;
+}
+
+/* Earning cards: consistent interactions */
+.earning-card {
+  overflow: hidden;
+}
+
+.earning-card:focus-within,
+.reward-panel:focus-within,
+.minigame-card:focus-within {
+  outline: 2px solid var(--ui-cyan);
+  outline-offset: 3px;
+}
+
+/* Buttons */
+button,
+.game-button {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  transition:
+    filter 160ms ease,
+    transform 160ms ease,
+    border-color 160ms ease;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--ui-cyan);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) {
+  button:not(:disabled):hover {
+    filter: brightness(1.08);
+  }
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Images and embedded content */
+img,
+svg {
+  max-width: 100%;
+}
+
+.roadmap-level-icon svg {
+  display: block;
+}
+
+/* Mobile and tablet */
+@media (max-width: 768px) {
+  .dashboard-container {
+    width: calc(100% - 24px);
+    padding-block: 18px 32px;
+  }
+
+  .roadmap-card {
+    padding: 17px;
+    border-radius: 17px;
+  }
+
+  .roadmap-header {
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .roadmap-header h2 {
+    font-size: 1.35rem;
+  }
+
+  .roadmap-count {
+    padding: 7px 9px;
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .roadmap-header {
+    flex-direction: column;
+  }
+
+  .roadmap-count {
+    align-self: flex-start;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
