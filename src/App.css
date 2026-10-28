@@ -3004,3 +3004,143 @@ body {
     animation: none;
   }
 }
+
+/* VELOOP — Cyber Relic Achievement Badges */
+
+.cyber-badge {
+  --badge-color: #48e5ff;
+  --badge-glow: rgba(72, 229, 255, 0.35);
+
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+  border-radius: 23px;
+  color: var(--badge-color);
+  background:
+    radial-gradient(ellipse at 50% 20%, var(--badge-glow), transparent 72%),
+    linear-gradient(145deg, #202c4a, #0a1022 75%);
+  border: 1px solid color-mix(in srgb, var(--badge-color) 75%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.17),
+    inset 0 -9px 18px rgba(0, 0, 0, 0.2),
+    0 0 18px var(--badge-glow);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.cyber-badge::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid color-mix(in srgb, var(--badge-color) 35%, transparent);
+  border-radius: 17px;
+  pointer-events: none;
+}
+
+.cyber-badge::after {
+  content: "";
+  position: absolute;
+  width: 34px;
+  height: 2px;
+  top: 8px;
+  background: linear-gradient(90deg, transparent, var(--badge-color), transparent);
+  opacity: 0.8;
+}
+
+.cyber-badge__symbol {
+  width: 53px;
+  height: 53px;
+  filter: drop-shadow(0 0 7px var(--badge-glow));
+}
+
+/* Unique identity for each rank */
+.cyber-badge--starter {
+  --badge-color: #48e5ff;
+  --badge-glow: rgba(72, 229, 255, 0.3);
+}
+
+.cyber-badge--explorer {
+  --badge-color: #a78bfa;
+  --badge-glow: rgba(167, 139, 250, 0.34);
+}
+
+.cyber-badge--achiever {
+  --badge-color: #59aaff;
+  --badge-glow: rgba(89, 170, 255, 0.34);
+}
+
+.cyber-badge--champion {
+  --badge-color: #c4a0ff;
+  --badge-glow: rgba(167, 139, 250, 0.42);
+}
+
+.cyber-badge--elite {
+  --badge-color: #ffd782;
+  --badge-glow: rgba(255, 215, 130, 0.35);
+}
+
+.cyber-badge--master {
+  --badge-color: #df91ff;
+  --badge-glow: rgba(223, 145, 255, 0.35);
+}
+
+.cyber-badge--legend {
+  --badge-color: #6fffe1;
+  --badge-glow: rgba(72, 229, 255, 0.46);
+}
+
+/* Current level gets a stronger energy halo */
+.roadmap-level.current .cyber-badge {
+  box-shadow:
+    0 0 0 3px rgba(167, 139, 250, 0.12),
+    0 0 22px var(--badge-glow),
+    0 0 38px rgba(167, 139, 250, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Completed: retain a clear, successful state */
+.roadmap-level.completed .cyber-badge {
+  border-color: #2de6be;
+  --badge-color: #2de6be;
+  --badge-glow: rgba(45, 230, 190, 0.2);
+}
+
+/* Locked: muted but still recognizable */
+.roadmap-level.locked .cyber-badge {
+  filter: saturate(0.45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  opacity: 0.78;
+}
+
+@media (hover: hover) {
+  .roadmap-level:hover .cyber-badge {
+    transform: translateY(-3px) scale(1.04);
+  }
+}
+
+@media (max-width: 480px) {
+  .cyber-badge {
+    width: 66px;
+    height: 66px;
+    border-radius: 20px;
+  }
+
+  .cyber-badge::before {
+    border-radius: 14px;
+  }
+
+  .cyber-badge__symbol {
+    width: 47px;
+    height: 47px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cyber-badge {
+    transition: none;
+  }
+}
